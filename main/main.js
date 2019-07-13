@@ -22,3 +22,7 @@ const combineItems = decodedBarcodes =>{
         return it;
     });
 }
+const decodeTags = tags =>{
+    const decodedBarcodes = decodeBarcodes(tags);
+    return combineItems(decodedBarcodes);
+}
