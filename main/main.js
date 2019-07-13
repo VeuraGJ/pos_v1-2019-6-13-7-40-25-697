@@ -26,3 +26,14 @@ const decodeTags = tags =>{
     const decodedBarcodes = decodeBarcodes(tags);
     return combineItems(decodedBarcodes);
 }
+const promoteReceiptItem = (items,allPromotions) =>{
+    return items.map(it => {
+        const buyTwoGetOne = allPromotions.find(promotion => promotion.type === 'BUY_TWO_GET_ONE_FREE').barcodes;
+        if(buyTwoGetOne.includes(it.barcode) && it.amount > 2){
+            it.subtotal = (it.amount - 1)* it.price;
+        }else{
+            it.subtotal = it.amount * it.price;
+        }
+        return it;
+    });
+}
