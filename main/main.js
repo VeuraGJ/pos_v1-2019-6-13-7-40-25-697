@@ -72,3 +72,9 @@ const renderReceipt = receipt => {
     renderedReceipt = renderedReceipt + `----------------------\n总计：${receipt.total.toFixed(2)}(元)\n节省：${receipt.saving.toFixed(2)}(元)\n**********************`;
     return renderedReceipt;
 }
+const printReceipt = tags =>{
+    const items = decodeTags(tags);
+    const receiptItems = calculateReceiptItems(items);
+    const receipt = calculateReceipt(receiptItems);
+    console.log(renderReceipt(receipt));
+}
