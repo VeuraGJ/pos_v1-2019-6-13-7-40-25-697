@@ -164,4 +164,52 @@ it('should print text', () => {
     }
     ]);
 });
+//test calculateReceiptItems
+it('should print text', () => {
+
+  const items = [
+    { barcode: "ITEM000001",
+      amount: 5,
+      name: '雪碧',
+      unit: '瓶',
+      price: 3.00
+    },
+    { barcode: "ITEM000003", 
+      amount: 2.5,
+      name: '荔枝',
+      unit: '斤',
+      price: 15.00
+    },
+    { barcode: "ITEM000005", 
+      amount: 3,
+      name: '方便面',
+      unit: '袋',
+      price: 4.50
+    }
+    ];
+  const result = calculateReceiptItems(items);
+  expect(result).toEqual([
+    { barcode: "ITEM000001",
+      amount: 5,
+      name: '雪碧',
+      unit: '瓶',
+      price: 3.00,
+      subtotal: 12.00
+    },
+    { barcode: "ITEM000003", 
+      amount: 2.5,
+      name: '荔枝',
+      unit: '斤',
+      price: 15.00,
+      subtotal: 37.50
+    },
+    { barcode: "ITEM000005", 
+      amount: 3,
+      name: '方便面',
+      unit: '袋',
+      price: 4.50,
+      subtotal: 9.00
+    }
+    ]);
+});
 });

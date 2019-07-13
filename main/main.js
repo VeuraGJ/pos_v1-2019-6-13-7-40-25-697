@@ -37,3 +37,7 @@ const promoteReceiptItem = (items,allPromotions) =>{
         return it;
     });
 }
+const calculateReceiptItems = items =>{
+    const allPromotions = loadPromotions();
+    return promoteReceiptItem(items,allPromotions);
+}
