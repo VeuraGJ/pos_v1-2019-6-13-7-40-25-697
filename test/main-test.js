@@ -31,6 +31,7 @@ describe('pos', () => {
 //     expect(console.log).toHaveBeenCalledWith(expectText);
 //   });
 
+//test decodeBarcode
 it('should print text', () => {
 
   const tags = [
@@ -46,5 +47,37 @@ it('should print text', () => {
 
   const result = decodeBarcodes(tags);
   expect(result).toEqual([{barcode: "ITEM000001", amount: 5},{barcode: "ITEM000003", amount: 2.5},{barcode: "ITEM000005", amount: 3}]);
+});
+//test combineItem
+it('should print text', () => {
+
+  const decodedBarcodes = [
+    {barcode: "ITEM000001", amount: 5},
+    {barcode: "ITEM000003", amount: 2.5},
+    {barcode: "ITEM000005", amount: 3}
+  ];
+
+  const result = combineItems(decodedBarcodes);
+  console.log(result);
+  expect(result).toEqual([
+  { barcode: "ITEM000001",
+    amount: 5,
+    name: '雪碧',
+    unit: '瓶',
+    price: 3.00
+  },
+  { barcode: "ITEM000003", 
+    amount: 2.5,
+    name: '荔枝',
+    unit: '斤',
+    price: 15.00
+  },
+  { barcode: "ITEM000005", 
+    amount: 3,
+    name: '方便面',
+    unit: '袋',
+    price: 4.50
+  }
+  ]);
 });
 });
