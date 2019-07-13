@@ -64,3 +64,11 @@ const calculateReceipt = receiptItems =>{
     receipt.saving = saving;
     return receipt;
 }
+const renderReceipt = receipt => {
+    let renderedReceipt = `***<没钱赚商店>收据***\n`;
+    for(let i of receipt.receiptItems){
+        renderedReceipt = renderedReceipt + `名称：${i.name}，数量：${i.amount}${i.unit}，单价：${(i.price.toFixed(2))}(元)，小计：${i.subtotal.toFixed(2)}(元)\n`;
+    }
+    renderedReceipt = renderedReceipt + `----------------------\n总计：${receipt.total.toFixed(2)}(元)\n节省：${receipt.saving.toFixed(2)}(元)\n**********************`;
+    return renderedReceipt;
+}
