@@ -41,3 +41,10 @@ const calculateReceiptItems = items =>{
     const allPromotions = loadPromotions();
     return promoteReceiptItem(items,allPromotions);
 }
+const calculateReceiptTotal = receiptItems =>{
+    let total = 0;
+    for(let i of receiptItems){
+        total += i.subtotal;
+    }
+    return total;
+}

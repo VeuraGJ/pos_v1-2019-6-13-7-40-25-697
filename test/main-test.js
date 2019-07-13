@@ -32,7 +32,7 @@ describe('pos', () => {
 //   });
 
 //test decodeBarcode
-it('should print text', () => {
+it('should return barcode and amount', () => {
 
   const tags = [
     'ITEM000001',
@@ -49,7 +49,7 @@ it('should print text', () => {
   expect(result).toEqual([{barcode: "ITEM000001", amount: 5},{barcode: "ITEM000003", amount: 2.5},{barcode: "ITEM000005", amount: 3}]);
 });
 //test combineItem
-it('should print text', () => {
+it('should return items information and amount', () => {
 
   const decodedBarcodes = [
     {barcode: "ITEM000001", amount: 5},
@@ -80,7 +80,7 @@ it('should print text', () => {
   ]);
 });
 //test decodeTags
-it('should print text', () => {
+it('should return decodedTags', () => {
 
   const tags = [
     'ITEM000001',
@@ -116,7 +116,7 @@ it('should print text', () => {
     ]);
 });
 //test promoteReceiptItems
-it('should print text', () => {
+it('should return items with subtotal', () => {
 
   const items = [
     { barcode: "ITEM000001",
@@ -165,7 +165,7 @@ it('should print text', () => {
     ]);
 });
 //test calculateReceiptItems
-it('should print text', () => {
+it('should return calculate ReceiptItems', () => {
 
   const items = [
     { barcode: "ITEM000001",
@@ -211,5 +211,34 @@ it('should print text', () => {
       subtotal: 9.00
     }
     ]);
+});
+//test calculateReceiptTotal
+it('should calculate Receipt Total', () => {
+
+  const ReceiptItems = [
+    { barcode: "ITEM000001",
+      amount: 5,
+      name: '雪碧',
+      unit: '瓶',
+      price: 3.00,
+      subtotal: 12.00
+    },
+    { barcode: "ITEM000003", 
+      amount: 2.5,
+      name: '荔枝',
+      unit: '斤',
+      price: 15.00,
+      subtotal: 37.50
+    },
+    { barcode: "ITEM000005", 
+      amount: 3,
+      name: '方便面',
+      unit: '袋',
+      price: 4.50,
+      subtotal: 9.00
+    }
+    ];
+  const result = calculateReceiptTotal(ReceiptItems);
+  expect(result).toEqual(58.50);
 });
 });
